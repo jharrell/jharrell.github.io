@@ -20,31 +20,10 @@ jobs:
       - name: Copy images
         run: mkdir build && cp -R img build/img
 
-      - name: Marp Build (README)
+      - name: Marp Build (presentations folder)
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
-          args: README.md -o build/index.html
-        env:
-          MARP_USER: root:root
-
-      - name: Marp Build (README.pdf)
-        uses: docker://marpteam/marp-cli:v1.7.0
-        with:
-          args: README.md -o build/README.pdf
-        env:
-          MARP_USER: root:root
-
-      - name: Marp Build (README.pptx)
-        uses: docker://marpteam/marp-cli:v1.7.0
-        with:
-          args: README.md -o build/README.pptx
-        env:
-          MARP_USER: root:root
-
-      - name: Marp Build (docs folder)
-        uses: docker://marpteam/marp-cli:v1.7.0
-        with:
-          args: -I docs/ -o build/docs/
+          args: -I presentations/ -o build/presentations/
         env:
           MARP_USER: root:root
 
